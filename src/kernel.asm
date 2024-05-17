@@ -22,4 +22,7 @@ _start:
     call kernel_main
     jmp $
 
+; problem:
+;     mov eax, 0
+;     div eax ; radimo u assembleru jer bi nam kod C-a to compiler mogal prepoznat i preventirat
 times 512-($ - $$) db 0

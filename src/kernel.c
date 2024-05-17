@@ -1,4 +1,5 @@
 #include "kernel.h"
+#include "idt/idt.h"
 #include <stddef.h>
 #include <stdint.h>
 
@@ -34,7 +35,7 @@ void terminal_writechar(char c, char color)
     }
 }
 
-void termianl_initialize()
+void terminal_initialize()
 {
     video_mem = (uint16_t *)(0xB8000);
     terminal_row = 0;
@@ -64,9 +65,13 @@ void print(const char* str)
     }
 }
 
+
 void kernel_main()
 {
-    termianl_initialize();
+    terminal_initialize();
     print("Marin parin");
     // pošto se koristi little endian, moras prvo definirat boju pa character
+
+    // Initialize the IDT
+    idt_init();
 }
