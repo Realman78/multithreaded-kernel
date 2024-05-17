@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include "idt/idt.h"
+#include "io/io.h"
 #include <stddef.h>
 #include <stdint.h>
 
@@ -74,4 +75,6 @@ void kernel_main()
 
     // Initialize the IDT
     idt_init();
+
+    // outb(0x60, 0xff);
 }
